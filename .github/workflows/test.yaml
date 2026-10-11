@@ -7,7 +7,30 @@ on:
   pull_request:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+
+    - uses: actions/setup-python@v7
+      with:
+        python-version: "3.12"
+
+    - uses: astral-sh/setup-uv@v7
+      with:
+        version: "0.7.19"
+
+    - uses: extractions/setup-just@v4
+
+    # ty-check needs the compiled extension to resolve kafkars._lib
+    - name: Build
+      run: just develop
+
+    - name: Run prek
+      run: just lint
+
   test:
+    needs: lint
     strategy:
       matrix:
         python:
@@ -18,9 +41,9 @@ jobs:
           - "3.14"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python }}
 
@@ -33,16 +56,12 @@ jobs:
     - name: Build
       run: just develop
 
-    - name: Run prek
-      if: matrix.python == '3.12'
-      run: just lint
-
     - name: Run coverage
       run: just coverage
 
     - name: Upload coverage to Codecov
       if: matrix.python == '3.12'
-      uses: codecov/codecov-action@v6
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./lcov.info,./coverage.xml
@@ -51,9 +70,9 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -69,6 +88,7 @@ jobs:
     if: always()
 
     needs:
+    - lint
     - test
     - docs
 
