@@ -1,3 +1,6 @@
+# Python version used by uv; CI overrides it per matrix entry
+export UV_PYTHON := env("UV_PYTHON", "3.12")
+
 # Default recipe
 default:
     @echo "Run recipes individually! Use 'just --list' to see available recipes."
@@ -16,16 +19,15 @@ clean:
 
 # Create virtual environment and install dependencies
 env:
-    test -d .venv || uv sync --python=3.12
-    . .venv/bin/activate && uv sync --group=dev
+    uv sync --group=dev
 
 # Build the Python extension in development mode
 develop: env
-    . .venv/bin/activate && uv run maturin develop
+    uv run maturin develop
 
 # Run all tests
 test: develop
-    RUST_BACKTRACE=1 uv run python -m pytest python/tests && . .venv/bin/activate && cargo test
+    RUST_BACKTRACE=1 uv run python -m pytest python/tests && uv run cargo test
 
 # Build the Python package
 build: env
@@ -33,11 +35,11 @@ build: env
 
 # Build distributable wheels via Docker
 dist: env
-    . .venv/bin/activate && docker run --rm -v $(pwd):/io ghcr.io/pyo3/maturin build --release --strip --out dist
+    docker run --rm -v $(pwd):/io ghcr.io/pyo3/maturin build --release --strip --out dist
 
 # Format and lint
-lint:
-    . .venv/bin/activate && cargo fmt && cargo clippy --all-targets -- -D warnings && prek run --all-files
+lint: env
+    uv run cargo fmt && uv run cargo clippy --all-targets -- -D warnings && uv run prek run --all-files
 
 # Install coverage tools
 coverage-env:
@@ -48,7 +50,7 @@ coverage-env:
 coverage: develop coverage-env
     uv run coverage run --source=python/kafkars -m pytest python/tests && \
         uv run coverage xml -o coverage.xml
-    . .venv/bin/activate && CARGO_INCREMENTAL=0 RUSTFLAGS="-Cinstrument-coverage" LLVM_PROFILE_FILE="kafkars-%p-%m.profraw" cargo test
+    CARGO_INCREMENTAL=0 RUSTFLAGS="-Cinstrument-coverage" LLVM_PROFILE_FILE="kafkars-%p-%m.profraw" uv run cargo test
     grcov . -s . --binary-path ./target/debug/ -t lcov --branch --ignore-not-existing --ignore "target/*" --ignore "python/*" -o lcov.info
     @echo ""
     @echo "=== Python Coverage Summary ==="
@@ -65,9 +67,9 @@ update:
     cargo upgrade --incompatible
     cargo generate-lockfile
     uv lock --upgrade
-    prek autoupdate
-    -prek run --all-files
-    prek run --all-files
+    uv run prek autoupdate
+    -uv run prek run --all-files
+    uv run prek run --all-files
 
 # Update dependencies and create a PR branch
 update-e2e:
