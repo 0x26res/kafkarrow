@@ -17,10 +17,12 @@ jobs:
           - "3.13"
           - "3.14"
     runs-on: ubuntu-latest
+    env:
+      UV_PYTHON: ${{ matrix.python }}
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python }}
 
@@ -30,19 +32,19 @@ jobs:
 
     - uses: extractions/setup-just@v4
 
-    - name: Build
-      run: just develop
-
     - name: Run prek
       if: matrix.python == '3.12'
       run: just lint
+
+    - name: Build
+      run: just develop
 
     - name: Run coverage
       run: just coverage
 
     - name: Upload coverage to Codecov
       if: matrix.python == '3.12'
-      uses: codecov/codecov-action@v6
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./lcov.info,./coverage.xml
@@ -51,9 +53,9 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
