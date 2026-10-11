@@ -71,10 +71,10 @@ batch = manager.poll(timeout_ms=1000)
 df = batch.to_pandas()
 
 # Decode string values
-df['value_str'] = df['value'].apply(lambda x: x.decode('utf-8') if x else None)
+df["value_str"] = df["value"].apply(lambda x: x.decode("utf-8") if x else None)
 
 # Filter by topic
-events = df[df['topic'] == 'events']
+events = df[df["topic"] == "events"]
 ```
 
 ## Processing with polars
@@ -86,9 +86,7 @@ batch = manager.poll(timeout_ms=1000)
 df = pl.from_arrow(batch)
 
 # Process with polars
-df = df.with_columns(
-    pl.col('value').cast(pl.Utf8).alias('value_str')
-)
+df = df.with_columns(pl.col("value").cast(pl.Utf8).alias("value_str"))
 ```
 
 ## Next Steps

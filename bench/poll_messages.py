@@ -4,7 +4,6 @@
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional
 
 import pyarrow as pa
 import pyarrow.compute as pc
@@ -23,7 +22,7 @@ class BatchProcessor:
     # State
     batch_count: int = field(default=0, init=False)
     total_messages: int = field(default=0, init=False)
-    prev_max_timestamp: Optional[datetime] = field(default=None, init=False)
+    prev_max_timestamp: datetime | None = field(default=None, init=False)
 
     def process(
         self, batch: pa.RecordBatch, state: pa.RecordBatch, is_live: bool
@@ -138,7 +137,7 @@ def poll(
         "--bootstrap-servers",
         help="Kafka bootstrap servers (e.g., localhost:9092)",
     ),
-    topics: list[str] = typer.Option(
+    topics: list[str] = typer.Option(  # noqa B008
         ...,
         "--topic",
         help="Topics with policy: topic:policy[:time_ms]. "
@@ -149,7 +148,7 @@ def poll(
     timeout_ms: int = typer.Option(
         1_000, "--timeout", help="Poll timeout in milliseconds"
     ),
-    max_batches: Optional[int] = typer.Option(
+    max_batches: int | None = typer.Option(
         None, "--max-batches", help="Maximum number of batches to consume"
     ),
     batch_size: int = typer.Option(

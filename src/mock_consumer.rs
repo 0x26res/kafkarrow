@@ -163,11 +163,8 @@ impl KafkaConsumer for MockConsumer {
                 return None;
             }
             // Non-zero timeout: load next batch
-            if let Some(next_batch) = state.message_batches.pop_front() {
-                state.current_batch = next_batch;
-            } else {
-                return None;
-            }
+            let next_batch = state.message_batches.pop_front()?;
+            state.current_batch = next_batch;
         }
 
         // Return next message from current batch (if partition not paused)

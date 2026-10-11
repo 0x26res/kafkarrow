@@ -126,11 +126,11 @@ Use vectorized operations instead of row-by-row processing:
 ```python
 # Good: Vectorized
 df = batch.to_pandas()
-df['value_decoded'] = df['value'].str.decode('utf-8')
+df["value_decoded"] = df["value"].str.decode("utf-8")
 
 # Bad: Row-by-row
 for i, row in df.iterrows():
-    row['value'].decode('utf-8')
+    row["value"].decode("utf-8")
 ```
 
 ### 3. Use polars for better performance
