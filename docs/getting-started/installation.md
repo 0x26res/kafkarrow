@@ -23,6 +23,7 @@ pip install kafkars[docs]
 
 ```python
 import kafkars
+
 print(kafkars.__version__)
 ```
 

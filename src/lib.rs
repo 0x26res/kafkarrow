@@ -25,10 +25,12 @@ use source_topic::SourceTopic;
 
 struct PySourceTopic(SourceTopic);
 
-impl<'py> FromPyObject<'py> for PySourceTopic {
-    fn extract_bound(obj: &Bound<'py, PyAny>) -> PyResult<Self> {
+impl<'a, 'py> FromPyObject<'a, 'py> for PySourceTopic {
+    type Error = PyErr;
+
+    fn extract(obj: Borrowed<'a, 'py, PyAny>) -> PyResult<Self> {
         let (name, policy, time_ms): (String, String, Option<i64>) = if let Ok(dict) =
-            obj.downcast::<PyDict>()
+            obj.cast::<PyDict>()
         {
             let name: String = dict
                 .get_item("name")?

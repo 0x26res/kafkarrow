@@ -1,18 +1,36 @@
 # kafkars
 
-[![PyPI](https://img.shields.io/pypi/v/kafkars.svg)](https://pypi.org/project/kafkars/)
-[![Downloads](https://img.shields.io/pypi/dm/kafkars.svg)](https://pypi.org/project/kafkars/)
-[![Documentation](https://readthedocs.org/projects/kafkars/badge/?version=latest)](https://kafkars.readthedocs.io/en/latest/?badge=latest)
-[![Python](https://img.shields.io/pypi/pyversions/kafkars.svg)](https://pypi.org/project/kafkars/)
-[![License](https://img.shields.io/pypi/l/kafkars.svg)](https://github.com/0x26res/kafkars/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/0x26res/kafkars?style=social)](https://github.com/0x26res/kafkars)
-[![GitHub repo size](https://img.shields.io/github/repo-size/0x26res/kafkars)](https://github.com/0x26res/kafkars)
-[![GitHub issues](https://img.shields.io/github/issues/0x26res/kafkars)](https://github.com/0x26res/kafkars/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/0x26res/kafkars/pulls)
-[![Rust](https://img.shields.io/badge/rust-%23000000.svg?logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![Apache Arrow](https://img.shields.io/badge/Apache%20Arrow-powered-orange.svg)](https://arrow.apache.org/)
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![prek](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json)](https://github.com/j178/prek)
+[![PyPI Version][pypi-image]][pypi-url]
+[![Python Version][versions-image]][versions-url]
+[![PyPI Wheel][wheel-image]][wheel-url]
+[![Documentation][docs-image]][docs-url]
+[![Downloads][downloads-image]][downloads-url]
+[![Downloads][downloads-month-image]][downloads-month-url]
+[![Build Status][build-image]][build-url]
+[![Tests][test-image]][test-url]
+[![codecov][codecov-image]][codecov-url]
+[![License][license-image]][license-url]
+[![Ruff][ruff-image]][ruff-url]
+[![Github Stars][stars-image]][stars-url]
+[![GitHub Forks][forks-image]][forks-url]
+[![GitHub issues][github-issues-image]][github-issues-url]
+[![GitHub Release][release-image]][release-url]
+[![Release Date][release-date-image]][release-url]
+[![Last Commit][last-commit-image]][commits-url]
+[![Commit Activity][commit-activity-image]][commits-url]
+[![Open PRs][open-prs-image]][prs-url]
+[![Contributors][contributors-image]][contributors-url]
+[![Contributing][contributing-image]][contributing-url]
+[![Repo Size][repo-size-image]][repo-size-url]
+[![Rust][rust-image]][rust-url]
+[![Apache Arrow][apache-arrow-image]][apache-arrow-url]
+[![prek][prek-image]][prek-url]
+
+[Repository](https://github.com/0x26res/kafkars) |
+[Documentation](https://kafkars.readthedocs.io/) |
+[PyPI](https://pypi.org/project/kafkars/) |
+[Issues](https://github.com/0x26res/kafkars/issues) |
+[Releases](https://github.com/0x26res/kafkars/releases)
 
 Rust-based, Arrow-powered Python Kafka client for high-throughput data pipelines.
 
@@ -118,3 +136,52 @@ Full documentation is available at [kafkars.readthedocs.io](https://kafkars.read
 ## License
 
 Apache 2.0
+
+[pypi-image]: https://img.shields.io/pypi/v/kafkars
+[pypi-url]: https://pypi.org/project/kafkars/
+[versions-image]: https://img.shields.io/pypi/pyversions/kafkars
+[versions-url]: https://pypi.org/project/kafkars/
+[wheel-image]: https://img.shields.io/pypi/wheel/kafkars
+[wheel-url]: https://pypi.org/project/kafkars/
+[docs-image]: https://readthedocs.org/projects/kafkars/badge/?version=latest
+[docs-url]: https://kafkars.readthedocs.io/en/latest/
+[downloads-image]: https://static.pepy.tech/badge/kafkars
+[downloads-url]: https://pepy.tech/project/kafkars
+[downloads-month-image]: https://static.pepy.tech/badge/kafkars/month
+[downloads-month-url]: https://pepy.tech/project/kafkars
+[build-image]: https://github.com/0x26res/kafkars/actions/workflows/ci.yaml/badge.svg
+[build-url]: https://github.com/0x26res/kafkars/actions/workflows/ci.yaml
+[test-image]: https://github.com/0x26res/kafkars/actions/workflows/test.yaml/badge.svg
+[test-url]: https://github.com/0x26res/kafkars/actions/workflows/test.yaml
+[codecov-image]: https://codecov.io/gh/0x26res/kafkars/branch/main/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/0x26res/kafkars
+[license-image]: https://img.shields.io/pypi/l/kafkars
+[license-url]: https://github.com/0x26res/kafkars/blob/main/LICENSE
+[ruff-image]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+[ruff-url]: https://github.com/astral-sh/ruff
+[stars-image]: https://img.shields.io/github/stars/0x26res/kafkars
+[stars-url]: https://github.com/0x26res/kafkars
+[forks-image]: https://img.shields.io/github/forks/0x26res/kafkars
+[forks-url]: https://github.com/0x26res/kafkars/network/members
+[github-issues-image]: https://img.shields.io/github/issues/0x26res/kafkars
+[github-issues-url]: https://github.com/0x26res/kafkars/issues
+[contributing-image]: https://img.shields.io/badge/PR-Welcome-%23FF8300.svg
+[contributing-url]: https://github.com/0x26res/kafkars/pulls
+[repo-size-image]: https://img.shields.io/github/repo-size/0x26res/kafkars
+[repo-size-url]: https://github.com/0x26res/kafkars
+[last-commit-image]: https://img.shields.io/github/last-commit/0x26res/kafkars
+[commits-url]: https://github.com/0x26res/kafkars/commits/main
+[commit-activity-image]: https://img.shields.io/github/commit-activity/m/0x26res/kafkars
+[open-prs-image]: https://img.shields.io/github/issues-pr/0x26res/kafkars
+[prs-url]: https://github.com/0x26res/kafkars/pulls
+[contributors-image]: https://img.shields.io/github/contributors/0x26res/kafkars
+[contributors-url]: https://github.com/0x26res/kafkars/graphs/contributors
+[release-image]: https://img.shields.io/github/v/release/0x26res/kafkars
+[release-date-image]: https://img.shields.io/github/release-date/0x26res/kafkars
+[release-url]: https://github.com/0x26res/kafkars/releases
+[rust-image]: https://img.shields.io/badge/rust-%23000000.svg?logo=rust&logoColor=white
+[rust-url]: https://www.rust-lang.org/
+[apache-arrow-image]: https://img.shields.io/badge/Apache%20Arrow-powered-orange.svg
+[apache-arrow-url]: https://arrow.apache.org/
+[prek-image]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json
+[prek-url]: https://github.com/j178/prek

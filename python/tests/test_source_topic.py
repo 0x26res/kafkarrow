@@ -1,5 +1,4 @@
 import pytest
-
 from kafkars import SourceTopic, validate_source_topic
 
 

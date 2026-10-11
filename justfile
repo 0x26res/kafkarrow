@@ -59,6 +59,10 @@ coverage: develop coverage-env
 
 # Update dependencies
 update:
+    cargo install cargo-edit
+    # --incompatible also bumps major versions (e.g. arrow 59 -> 60); without it
+    # cargo upgrade only moves within the existing requirement.
+    cargo upgrade --incompatible
     cargo generate-lockfile
     uv lock --upgrade
     prek autoupdate
@@ -70,8 +74,8 @@ update-e2e:
     #!/usr/bin/env bash
     set -euo pipefail
     branch=$(git rev-parse --abbrev-ref HEAD)
-    if [ "$branch" != "master" ]; then
-        echo "Error: must be on master branch (currently on '$branch')"
+    if [ "$branch" != "main" ]; then
+        echo "Error: must be on main branch (currently on '$branch')"
         exit 1
     fi
     if [ -n "$(git diff --stat)" ]; then
