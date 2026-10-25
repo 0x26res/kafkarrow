@@ -1,0 +1,29 @@
+name: Publish crates
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set version from tag
+        shell: bash
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          # Rewrites both the workspace package version and the kafkarrow-core
+          # dependency requirement (see [workspace.dependencies] in Cargo.toml).
+          sed -i "s/^version = \".*\"/version = \"$VERSION\"/" Cargo.toml
+
+      - name: Publish to crates.io
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        # kafkarrow depends on kafkarrow-core; cargo publishes them in dependency order.
+        run: cargo publish --allow-dirty -p kafkarrow-core -p kafkarrow

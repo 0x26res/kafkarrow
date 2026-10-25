@@ -67,12 +67,55 @@ jobs:
         run: |
           uv run --group=docs mkdocs build --strict
 
+  # Safeguard: a consumer pinned to a different arrow major version must be
+  # able to receive data from kafkarrow through the Arrow C Data Interface.
+  arrow-version-independence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test against a different arrow major version
+        run: cargo test --manifest-path tests/arrow-version-independence/Cargo.toml
+
+  # Safeguard: no arrow or rdkafka types may appear in the public API of the
+  # kafkarrow crate, otherwise consumers get pinned to its internal versions.
+  public-api-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install nightly toolchain
+        run: rustup toolchain install nightly
+      - name: Install cargo-public-api
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-public-api
+      - name: Check kafkarrow public API for leaked arrow/rdkafka types
+        run: |
+          # --simplified omits blanket impls, which rustdoc attributes to our
+          # types but which imply no version coupling.
+          cargo public-api -p kafkarrow --simplified > public-api.txt
+          cat public-api.txt
+          if grep -E '\b(arrow|arrow_[a-z]+|rdkafka|rdkafka_sys)::' public-api.txt; then
+            echo "::error::arrow/rdkafka types leaked into the public API of the kafkarrow crate"
+            exit 1
+          fi
+
+  # Check that the crates can be packaged for crates.io (does not publish).
+  package-crates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Package crates
+        run: cargo publish --dry-run -p kafkarrow-core -p kafkarrow
+
   all-tests-pass:
     if: always()
 
     needs:
     - test
     - docs
+    - arrow-version-independence
+    - public-api-check
+    - package-crates
 
     runs-on: ubuntu-latest
 

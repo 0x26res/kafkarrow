@@ -1,19 +1,19 @@
-[dependencies]
-arrow = { version = "60.0.0", features = ["pyarrow"] }
-pyo3 = { version = "0.29.3", features = ["abi3-py310"] }
-rdkafka = "0.39.0"
-uuid = { version = "1", features = ["v4"] }
+[workspace]
+exclude = ["tests/arrow-version-independence"]
+members = ["kafkarrow", "kafkarrow-core", "kafkarrow-python"]
+resolver = "2"
 
-[dev-dependencies]
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
+# The release workflows substitute every line of this file matching
+# `^version = "..."` with the tag version, keeping this requirement in sync
+# with the published kafkarrow-core version.
+[workspace.dependencies.kafkarrow-core]
+path = "kafkarrow-core"
+version = "0.0.1"
 
-[lib]
-crate-type = ["cdylib"]
-name = "kafkarrow"
-
-[package]
+[workspace.package]
+authors = ["0x26res"]
 edition = "2021"
+homepage = "https://github.com/0x26res/kafkarrow"
 license = "Apache-2.0"
-name = "kafkarrow"
+repository = "https://github.com/0x26res/kafkarrow"
 version = "0.0.1"

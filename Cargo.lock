@@ -568,11 +568,27 @@ name = "kafkarrow"
 version = "0.0.1"
 dependencies = [
  "arrow",
- "pyo3",
+ "kafkarrow-core",
+]
+
+[[package]]
+name = "kafkarrow-core"
+version = "0.0.1"
+dependencies = [
+ "arrow",
  "rdkafka",
  "serde",
  "serde_json",
  "uuid",
+]
+
+[[package]]
+name = "kafkarrow-python"
+version = "0.0.1"
+dependencies = [
+ "arrow",
+ "kafkarrow-core",
+ "pyo3",
 ]
 
 [[package]]

@@ -50,4 +50,5 @@ docs = [
 [tool.maturin]
 module-name = "kafkarrow._lib"
 python-source = "python"
+manifest-path = "kafkarrow-python/Cargo.toml"
 features = [ "pyo3/extension-module" ]
