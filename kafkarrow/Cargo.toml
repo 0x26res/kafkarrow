@@ -1,0 +1,23 @@
+[dependencies]
+# arrow and rdkafka are internal implementation details: they must never
+# appear in this crate's public API. Data is exchanged through the Arrow C Data
+# Interface (see src/ffi.rs), so consumers can use any arrow version.
+arrow = { version = "60.0.0", features = ["ffi"] }
+kafkarrow-core.workspace = true
+
+[lib]
+name = "kafkarrow"
+path = "src/lib.rs"
+
+[package]
+authors.workspace = true
+categories = ["api-bindings", "data-structures"]
+description = "Kafka consumer that replays topics in timestamp order into Apache Arrow record batches, without pinning you to an arrow version"
+edition.workspace = true
+homepage.workspace = true
+keywords = ["kafka", "arrow", "consumer", "replay"]
+license.workspace = true
+name = "kafkarrow"
+readme = "README.md"
+repository.workspace = true
+version.workspace = true

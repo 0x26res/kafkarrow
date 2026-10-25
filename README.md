@@ -132,6 +132,15 @@ Each poll returns a RecordBatch with the following schema:
 | `from_relative_time(topic, ms)` | Start from N milliseconds ago          |
 | `from_absolute_time(topic, ms)` | Start from specific Unix timestamp     |
 
+## Rust
+
+kafkarrow is also available as two Rust crates:
+
+- [`kafkarrow`](https://crates.io/crates/kafkarrow): returns record batches through the Arrow C Data Interface, so it works with any arrow-rs version. Its public API has no arrow or rdkafka types.
+- [`kafkarrow-core`](https://crates.io/crates/kafkarrow-core): the implementation, with an API that uses arrow-rs and rdkafka types directly. You need to use the same arrow major version.
+
+See [`kafkarrow/README.md`](kafkarrow/README.md) for usage.
+
 ## Documentation
 
 Full documentation is available at [kafkarrow.readthedocs.io](https://kafkarrow.readthedocs.io).

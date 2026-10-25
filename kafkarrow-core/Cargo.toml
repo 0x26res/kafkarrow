@@ -1,0 +1,25 @@
+[dependencies]
+arrow = "60.0.0"
+rdkafka = "0.39.0"
+uuid = { version = "1", features = ["v4"] }
+
+[dev-dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[lib]
+name = "kafkarrow_core"
+path = "src/lib.rs"
+
+[package]
+authors.workspace = true
+categories = ["api-bindings", "data-structures"]
+description = "Core implementation of kafkarrow, exposing arrow-rs and rdkafka types. Pins specific arrow and rdkafka versions; for an arrow-version-independent API use the kafkarrow crate."
+edition.workspace = true
+homepage.workspace = true
+keywords = ["kafka", "arrow", "consumer", "replay"]
+license.workspace = true
+name = "kafkarrow-core"
+readme = "README.md"
+repository.workspace = true
+version.workspace = true

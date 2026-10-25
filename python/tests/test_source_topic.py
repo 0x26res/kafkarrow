@@ -1,4 +1,5 @@
 import pytest
+
 from kafkarrow import SourceTopic, validate_source_topic
 
 

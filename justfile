@@ -9,6 +9,7 @@ default:
 clean:
     cargo clean
     rm -rf target
+    rm -rf tests/arrow-version-independence/target
     find . -name "*.profraw" | xargs rm -f
     rm -f python/kafkarrow/*.so
     rm -rf site
@@ -29,6 +30,32 @@ develop: env
 test: develop
     RUST_BACKTRACE=1 uv run python -m pytest python/tests && uv run cargo test
 
+# Build the Rust crates only (skips kafkarrow-python, which needs maturin to link)
+build-crates:
+    cargo build -p kafkarrow-core -p kafkarrow
+
+# Safeguard: a consumer pinned to a different arrow major version must be able
+# to receive data from kafkarrow through the Arrow C Data Interface
+test-arrow-independence:
+    cargo test --manifest-path tests/arrow-version-independence/Cargo.toml
+
+# Safeguard: no arrow/rdkafka types may appear in the kafkarrow public API
+# (requires the nightly toolchain and cargo-public-api)
+check-public-api:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    # --simplified omits blanket impls, which imply no version coupling
+    api=$(cargo public-api -p kafkarrow --simplified)
+    if grep -E '\b(arrow|arrow_[a-z]+|rdkafka|rdkafka_sys)::' <<< "$api"; then
+        echo "ERROR: arrow/rdkafka types leaked into the kafkarrow public API"
+        exit 1
+    fi
+    echo "kafkarrow public API is clean"
+
+# Check that the crates can be packaged for crates.io (does not publish)
+package-crates:
+    cargo publish --dry-run --allow-dirty -p kafkarrow-core -p kafkarrow
+
 # Build the Python package
 build: env
     uv run maturin build
@@ -40,6 +67,7 @@ dist: env
 # Format and lint
 lint: env
     uv run cargo fmt && uv run cargo clippy --all-targets -- -D warnings && uv run prek run --all-files
+    cd tests/arrow-version-independence && cargo fmt && cargo clippy --all-targets -- -D warnings
 
 # Install coverage tools
 coverage-env:

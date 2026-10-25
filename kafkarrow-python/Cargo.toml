@@ -1,0 +1,17 @@
+[dependencies]
+arrow = { version = "60.0.0", features = ["pyarrow"] }
+kafkarrow-core.workspace = true
+pyo3 = { version = "0.29.3", features = ["abi3-py310"] }
+
+[lib]
+crate-type = ["cdylib"]
+name = "kafkarrow_python"
+path = "src/lib.rs"
+
+[package]
+description = "Python bindings for kafkarrow"
+edition.workspace = true
+license.workspace = true
+name = "kafkarrow-python"
+publish = false  # Only built by maturin for the Python wheel, not published to crates.io
+version.workspace = true
