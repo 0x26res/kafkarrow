@@ -564,7 +564,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "kafkars"
+name = "kafkarrow"
 version = "0.0.1"
 dependencies = [
  "arrow",

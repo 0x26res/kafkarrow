@@ -1,10 +1,10 @@
 # Batch Processing
 
-kafkars is designed for high-throughput batch processing. This guide explains how to get the most out of it.
+kafkarrow is designed for high-throughput batch processing. This guide explains how to get the most out of it.
 
 ## How Batching Works
 
-When you call `poll()`, kafkars:
+When you call `poll()`, kafkarrow:
 
 1. Polls Kafka for available messages
 2. Accumulates messages in an internal buffer

@@ -1,8 +1,8 @@
-# Kafkars Architecture
+# Kafkarrow Architecture
 
 ## Overview
 
-Kafkars is a Rust-based Kafka consumer library with Python bindings that provides:
+Kafkarrow is a Rust-based Kafka consumer library with Python bindings that provides:
 
 - **Ordered message delivery**: Messages are released in timestamp order across all partitions
 - **Offset resolution**: Supports multiple offset policies (earliest, latest, committed, time-based)
@@ -238,7 +238,7 @@ Partitions with timestamps ahead of the low water mark are paused to let slower 
 ## Python Interface
 
 ```python
-from kafkars import ConsumerManager, SourceTopic
+from kafkarrow import ConsumerManager, SourceTopic
 
 # Create source topics with offset policies
 topics = [

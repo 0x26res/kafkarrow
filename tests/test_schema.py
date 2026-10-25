@@ -1,12 +1,12 @@
 """Tests to verify Python schema literals match Rust schema definitions."""
 
-import kafkars
+import kafkarrow
 
 
 def test_message_schema_matches_rust():
     """Verify MESSAGE_SCHEMA matches the schema returned from Rust."""
-    rust_schema = kafkars.get_message_schema()
-    python_schema = kafkars.MESSAGE_SCHEMA
+    rust_schema = kafkarrow.get_message_schema()
+    python_schema = kafkarrow.MESSAGE_SCHEMA
 
     assert rust_schema.equals(python_schema), (
         f"MESSAGE_SCHEMA mismatch:\n  Rust:   {rust_schema}\n  Python: {python_schema}"
@@ -15,8 +15,8 @@ def test_message_schema_matches_rust():
 
 def test_partition_state_schema_matches_rust():
     """Verify PARTITION_STATE_SCHEMA matches the schema returned from Rust."""
-    rust_schema = kafkars.get_partition_state_schema()
-    python_schema = kafkars.PARTITION_STATE_SCHEMA
+    rust_schema = kafkarrow.get_partition_state_schema()
+    python_schema = kafkarrow.PARTITION_STATE_SCHEMA
 
     assert rust_schema.equals(python_schema), (
         f"PARTITION_STATE_SCHEMA mismatch:\n"
@@ -27,7 +27,7 @@ def test_partition_state_schema_matches_rust():
 
 def test_message_schema_fields():
     """Verify MESSAGE_SCHEMA has expected fields."""
-    schema = kafkars.MESSAGE_SCHEMA
+    schema = kafkarrow.MESSAGE_SCHEMA
     field_names = [f.name for f in schema]
 
     assert field_names == ["key", "value", "topic", "partition", "offset", "timestamp"]
@@ -35,7 +35,7 @@ def test_message_schema_fields():
 
 def test_partition_state_schema_fields():
     """Verify PARTITION_STATE_SCHEMA has expected fields."""
-    schema = kafkars.PARTITION_STATE_SCHEMA
+    schema = kafkarrow.PARTITION_STATE_SCHEMA
     field_names = [f.name for f in schema]
 
     assert field_names == [

@@ -10,10 +10,10 @@ serde_json = "1.0"
 
 [lib]
 crate-type = ["cdylib"]
-name = "kafkars"
+name = "kafkarrow"
 
 [package]
 edition = "2021"
 license = "Apache-2.0"
-name = "kafkars"
+name = "kafkarrow"
 version = "0.0.1"

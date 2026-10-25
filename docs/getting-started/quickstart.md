@@ -1,6 +1,6 @@
 # Quick Start
 
-This guide will help you get up and running with kafkars in minutes.
+This guide will help you get up and running with kafkarrow in minutes.
 
 ## Basic Usage
 
@@ -8,7 +8,7 @@ This guide will help you get up and running with kafkars in minutes.
 
 ```python
 import time
-from kafkars import ConsumerManager, SourceTopic
+from kafkarrow import ConsumerManager, SourceTopic
 ```
 
 ### 2. Define your topics

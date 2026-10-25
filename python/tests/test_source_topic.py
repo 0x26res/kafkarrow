@@ -1,5 +1,5 @@
 import pytest
-from kafkars import SourceTopic, validate_source_topic
+from kafkarrow import SourceTopic, validate_source_topic
 
 
 class TestValidateSourceTopic:
