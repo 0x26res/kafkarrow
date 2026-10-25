@@ -1,15 +1,15 @@
-# kafkars
+# kafkarrow
 
-!!! warning "Renamed"
-    This library is now called **kafkarrow** ([GitHub](https://github.com/0x26res/kafkarrow) / [PyPI](https://pypi.org/project/kafkarrow/) / [docs](https://kafkarrow.readthedocs.io)).
+!!! note "Renamed from kafkars"
+    kafkarrow was previously published as `kafkars`. It was renamed to avoid a clash with the newly created [`kafkars`](https://crates.io/crates/kafkars) Rust crate. Only the package name changed: `pip install kafkarrow` and `import kafkarrow`.
 
 Rust-based, Arrow-powered Python Kafka client for high-throughput data pipelines.
 
-## Why kafkars?
+## Why kafkarrow?
 
 Python's Global Interpreter Lock (GIL) and memory management create bottlenecks when consuming high-volume Kafka streams. Traditional Python Kafka clients process messages one at a time, requiring serialization/deserialization overhead for each message and limiting throughput.
 
-**kafkars** solves this by:
+**kafkarrow** solves this by:
 
 - **Rust core**: All Kafka operations (polling, buffering, ordering) happen in Rust, bypassing the GIL
 - **Batch processing**: Messages are accumulated and returned as Apache Arrow RecordBatches, not individual Python objects
@@ -27,7 +27,7 @@ This architecture is ideal for:
 
 ## Important: Analytics-Focused Design
 
-**kafkars does not commit offsets.** It is designed for analytics and high-throughput batch processing, not transactional workloads.
+**kafkarrow does not commit offsets.** It is designed for analytics and high-throughput batch processing, not transactional workloads.
 
 - **No exactly-once semantics**: Messages may be reprocessed if your application restarts
 - **No offset tracking**: You control where to start reading via offset policies
@@ -46,7 +46,7 @@ If you need exactly-once processing, transactional guarantees, or automatic offs
 
 ```python
 import time
-from kafkars import ConsumerManager, SourceTopic
+from kafkarrow import ConsumerManager, SourceTopic
 
 # Define source topics with offset policies
 topics = [

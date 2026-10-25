@@ -20,7 +20,7 @@ repos:
     rev: 1.9.4
     hooks:
       - id: bandit
-        files: "^python/kafkars/.*.py$"
+        files: "^python/kafkarrow/.*.py$"
         additional_dependencies:
           - ".[toml]"
         args: ["--config=pyproject.toml"]
@@ -62,7 +62,7 @@ repos:
         entry: uv run --with=ty ty check
         language: python
         types: [python]
-        files: ^python/kafkars/.*
+        files: ^python/kafkarrow/.*
         pass_filenames: true
 
 

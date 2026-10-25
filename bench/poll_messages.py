@@ -93,7 +93,7 @@ def parse_topic(topic_spec: str):
         topic_3:relative_time:3600000
         topic_4:absolute_time:1704067200000
     """
-    from kafkars import SourceTopic
+    from kafkarrow import SourceTopic
 
     parts = topic_spec.split(":")
     if len(parts) < 2:
@@ -159,7 +159,7 @@ def poll(
     ),
 ) -> None:
     """Poll messages from Kafka topics and display them as markdown tables."""
-    from kafkars import ConsumerManager
+    from kafkarrow import ConsumerManager
 
     # Parse topic specifications
     source_topics = [parse_topic(t) for t in topics]

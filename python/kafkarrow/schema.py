@@ -1,4 +1,4 @@
-"""PyArrow schemas for Kafkars data structures."""
+"""PyArrow schemas for Kafkarrow data structures."""
 
 import pyarrow as pa
 

@@ -1,6 +1,6 @@
 # Offset Policies
 
-kafkars supports flexible offset policies that let you control where to start consuming from each topic.
+kafkarrow supports flexible offset policies that let you control where to start consuming from each topic.
 
 ## Available Policies
 
@@ -9,7 +9,7 @@ kafkars supports flexible offset policies that let you control where to start co
 Start from the end of the topic (new messages only):
 
 ```python
-from kafkars import SourceTopic
+from kafkarrow import SourceTopic
 
 topic = SourceTopic.from_latest("my-topic")
 ```
@@ -53,7 +53,7 @@ topic = SourceTopic.from_absolute_time("my-topic", timestamp_ms)
 You can consume from multiple topics with different offset policies:
 
 ```python
-from kafkars import ConsumerManager, SourceTopic
+from kafkarrow import ConsumerManager, SourceTopic
 
 topics = [
     SourceTopic.from_earliest("historical-events"),

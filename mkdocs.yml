@@ -1,8 +1,8 @@
-site_name: kafkars
+site_name: kafkarrow
 site_description: Rust-based, Arrow-powered Python Kafka client for high-throughput data pipelines
-site_url: https://kafkars.readthedocs.io
-repo_url: https://github.com/0x26res/kafkars
-repo_name: 0x26res/kafkars
+site_url: https://kafkarrow.readthedocs.io
+repo_url: https://github.com/0x26res/kafkarrow
+repo_name: 0x26res/kafkarrow
 
 theme:
   name: material
@@ -79,6 +79,6 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/0x26res/kafkars
+      link: https://github.com/0x26res/kafkarrow
     - icon: fontawesome/brands/python
-      link: https://pypi.org/project/kafkars/
+      link: https://pypi.org/project/kafkarrow/

@@ -10,7 +10,7 @@ clean:
     cargo clean
     rm -rf target
     find . -name "*.profraw" | xargs rm -f
-    rm -f python/kafkars/*.so
+    rm -f python/kafkarrow/*.so
     rm -rf site
     rm -f .coverage
     rm -f coverage.xml
@@ -48,9 +48,9 @@ coverage-env:
 
 # Run coverage for both Python and Rust
 coverage: develop coverage-env
-    uv run coverage run --source=python/kafkars -m pytest python/tests && \
+    uv run coverage run --source=python/kafkarrow -m pytest python/tests && \
         uv run coverage xml -o coverage.xml
-    CARGO_INCREMENTAL=0 RUSTFLAGS="-Cinstrument-coverage" LLVM_PROFILE_FILE="kafkars-%p-%m.profraw" uv run cargo test
+    CARGO_INCREMENTAL=0 RUSTFLAGS="-Cinstrument-coverage" LLVM_PROFILE_FILE="kafkarrow-%p-%m.profraw" uv run cargo test
     grcov . -s . --binary-path ./target/debug/ -t lcov --branch --ignore-not-existing --ignore "target/*" --ignore "python/*" -o lcov.info
     @echo ""
     @echo "=== Python Coverage Summary ==="

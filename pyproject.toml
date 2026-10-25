@@ -3,7 +3,7 @@ build-backend = "maturin"
 requires = [ "maturin>=1.7,<2" ]
 
 [project]
-name = "kafkars"
+name = "kafkarrow"
 description = "Rust based, Arrow powered, python kafka client"
 readme = "README.md"
 license = { text = "Apache-2.0" }
@@ -24,11 +24,11 @@ optional-dependencies.docs = [
   "mkdocs-mermaid2-plugin>=1",
   "mkdocstrings[python]>=0.24",
 ]
-urls.changelog = "https://github.com/0x26res/kafkars/releases"
-urls.documentation = "https://kafkars.readthedocs.io/en/latest/"
-urls.homepage = "https://github.com/0x26res/kafkars"
-urls.issues = "https://github.com/0x26res/kafkars/issues"
-urls.repository = "https://github.com/0x26res/kafkars"
+urls.changelog = "https://github.com/0x26res/kafkarrow/releases"
+urls.documentation = "https://kafkarrow.readthedocs.io/en/latest/"
+urls.homepage = "https://github.com/0x26res/kafkarrow"
+urls.issues = "https://github.com/0x26res/kafkarrow/issues"
+urls.repository = "https://github.com/0x26res/kafkarrow"
 
 [dependency-groups]
 dev = [
@@ -48,6 +48,6 @@ docs = [
 ]
 
 [tool.maturin]
-module-name = "kafkars._lib"
+module-name = "kafkarrow._lib"
 python-source = "python"
 features = [ "pyo3/extension-module" ]

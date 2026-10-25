@@ -8,7 +8,7 @@
 ## Install from PyPI
 
 ```bash
-pip install kafkars
+pip install kafkarrow
 ```
 
 ## Install with extras
@@ -16,20 +16,20 @@ pip install kafkars
 For development:
 
 ```bash
-pip install kafkars[docs]
+pip install kafkarrow[docs]
 ```
 
 ## Verify Installation
 
 ```python
-import kafkars
+import kafkarrow
 
-print(kafkars.__version__)
+print(kafkarrow.__version__)
 ```
 
 ## Dependencies
 
-kafkars has minimal dependencies:
+kafkarrow has minimal dependencies:
 
 - **pyarrow** (>=14): For Arrow-based data transfer
 

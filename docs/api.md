@@ -25,7 +25,7 @@ ConsumerManager(
 **Example:**
 
 ```python
-from kafkars import ConsumerManager, SourceTopic
+from kafkarrow import ConsumerManager, SourceTopic
 
 manager = ConsumerManager(
     config={
@@ -173,7 +173,7 @@ Create a SourceTopic starting from an absolute Unix timestamp.
 PyArrow schema for message batches:
 
 ```python
-from kafkars import MESSAGE_SCHEMA
+from kafkarrow import MESSAGE_SCHEMA
 
 # Fields:
 # - key: binary (nullable)
@@ -189,7 +189,7 @@ from kafkars import MESSAGE_SCHEMA
 PyArrow schema for partition state:
 
 ```python
-from kafkars import PARTITION_STATE_SCHEMA
+from kafkarrow import PARTITION_STATE_SCHEMA
 
 # Fields:
 # - topic: utf8
