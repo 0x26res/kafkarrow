@@ -1,5 +1,8 @@
 # kafkars
 
+> [!IMPORTANT]
+> This library is now called **kafkarrow** ([GitHub](https://github.com/0x26res/kafkarrow) / [PyPI](https://pypi.org/project/kafkarrow/) / [docs](https://kafkarrow.readthedocs.io)).
+
 [![PyPI Version][pypi-image]][pypi-url]
 [![Python Version][versions-image]][versions-url]
 [![PyPI Wheel][wheel-image]][wheel-url]
