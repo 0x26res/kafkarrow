@@ -2,7 +2,7 @@
 # arrow and rdkafka are internal implementation details: they must never
 # appear in this crate's public API. Data is exchanged through the Arrow C Data
 # Interface (see src/ffi.rs), so consumers can use any arrow version.
-arrow = {version = "60.0.0", features = ["ffi"]}
+arrow = { version = "60.0.0", features = ["ffi"] }
 kafkarrow-core.workspace = true
 
 [lib]
