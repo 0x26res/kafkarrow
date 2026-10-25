@@ -1,5 +1,8 @@
 # kafkars
 
+!!! warning "Renamed"
+    This library is now called **kafkarrow** ([GitHub](https://github.com/0x26res/kafkarrow) / [PyPI](https://pypi.org/project/kafkarrow/) / [docs](https://kafkarrow.readthedocs.io)).
+
 Rust-based, Arrow-powered Python Kafka client for high-throughput data pipelines.
 
 ## Why kafkars?
